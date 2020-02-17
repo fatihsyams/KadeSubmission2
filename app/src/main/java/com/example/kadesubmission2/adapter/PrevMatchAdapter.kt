@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kadesubmission2.R
+import com.example.kadesubmission2.model.Match
 import com.example.kadesubmission2.model.ResponseLastModel
 import kotlinx.android.synthetic.main.item_match.view.*
 
-class PrevMatchAdapter(val context: Context, val item: List<ResponseLastModel>) : RecyclerView.Adapter<PrevMatchAdapter.ViewHolder>() {
+class PrevMatchAdapter(val context: Context, val item: List<Match>) : RecyclerView.Adapter<PrevMatchAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(context).inflate(R.layout.item_match, parent, false)
         return ViewHolder(v)
@@ -30,7 +31,7 @@ class PrevMatchAdapter(val context: Context, val item: List<ResponseLastModel>) 
         val intAwayScoreItemMatchTV = view.intAwayScoreItemMatchTV
         val dateEventItemMatchTV = view.dateEventItemMatchTV
 
-        fun bindItem(item : ResponseLastModel){
+        fun bindItem(item : Match){
             strEventItemMatchTV.text = item.strEvent
             strLeagueItemMatchTV.text = item.strLeague
             intHomeScoreItemMatchTV.text = item.idHomeTeam

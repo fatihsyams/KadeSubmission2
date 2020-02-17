@@ -1,13 +1,11 @@
 package com.example.kadesubmission2
 
-import com.example.kadesubmission2.model.RequestLastModel
-import com.example.kadesubmission2.model.ResponseLastModel
+import com.example.kadesubmission2.model.LeagueResponse
+import com.example.kadesubmission2.model.Match
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
@@ -16,8 +14,8 @@ interface MatchService {
 //    @GET("/api/v1/json/1/lookupleague.php?id={idLeague}")
 //    suspend fun getLastMatch(@Path("idLeague") idLeague: String): ResponseLastModel
 
-    @GET("https://www.thesportsdb.com/api/v1/json/1/lookupleague.php")
-    fun getNext(@Query("id") idLeague: Int): ResponseLastModel
+    @GET("/api/v1/json/1/lookupleague.php")
+    suspend fun getNext(@Query("id") idLeague: Int): LeagueResponse<List<Match>>
 
 //    @GET("eventspastleague.php?")
 //    suspend fun getLastMatch(@Query("id") idLeague:String) : LastModel

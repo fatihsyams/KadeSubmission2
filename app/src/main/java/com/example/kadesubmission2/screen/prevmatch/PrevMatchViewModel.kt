@@ -18,8 +18,8 @@ class PrevMatchViewModel : NavigatorViewModel(){
 
     private val service = MatchService.create()
 
-    private val _prevMatchLoad = MutableLiveData<Load<ResponseLastModel>> ()
-    val prevMatchLoad = _prevMatchLoad as LiveData<Load<ResponseLastModel>>
+    private val _prevMatchLoad = MutableLiveData<Load<List<Match>>> ()
+    val prevMatchLoad = _prevMatchLoad as LiveData<Load<List<Match>>>
 
     init {
         _prevMatchLoad.value = Load.Uninitialized
@@ -29,7 +29,7 @@ class PrevMatchViewModel : NavigatorViewModel(){
         _prevMatchLoad.value = Load.Loading
         try {
             val response = service.getNext(id)
-            _prevMatchLoad.value = Load.Success(response)
+            _prevMatchLoad.value = Load.Success(response.datas)
         }catch (e : HttpException) {
             _prevMatchLoad.value = Load.Fail(e)
         }
